@@ -14,13 +14,13 @@ namespace ToDoList.Controllers
     }
 
     [Route("/items/new")]
-    public ActionResult() CreateForm()
+    public ActionResult CreateForm()
     {
       return View();
     }
 
     [Route("/items")]
-    public ActionResult() Create(string description)
+    public ActionResult Create(string description)
     {
       Item myItem = new Item(description);
       return View("Index", myItem);
