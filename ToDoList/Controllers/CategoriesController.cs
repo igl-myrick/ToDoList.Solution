@@ -21,5 +21,12 @@ namespace ToDoList.Controllers
       return View();
     }
 
+    [HttpPost("/categories")]
+    public ActionResult Create(string categoryName)
+    {
+      Category newCategory = new Category(categoryName);
+      return RedirectToAction("Index");
+    }
+
   }
 }
