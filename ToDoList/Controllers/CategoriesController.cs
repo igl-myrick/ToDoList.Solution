@@ -28,5 +28,16 @@ namespace ToDoList.Controllers
       return RedirectToAction("Index");
     }
 
+    [HttpGet("/categories/{id}")]
+    public ActionResult Show(int id)
+    {
+      Dictionary<string, object> model = new Dictionary<string, object>();
+      Category selectedCategory = Category.Find(Id);
+      List<Item> categoryItems = selectedCategory.Items;
+      model.Add("category", selectedCategory);
+      model.Add("items", categoryItems);
+      return View(model);
+    }
+
   }
 }
