@@ -9,6 +9,8 @@ namespace ToDoList
     {
       WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
+      builder.Configuration["ConnectionStrings:DefaultConnection"];
+
       builder.Services.AddControllersWithViews();
 
       WebApplication app = builder.Build();
