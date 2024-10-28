@@ -9,7 +9,7 @@ namespace ToDoList
     {
       WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-      builder.Configuration["ConnectionStrings:DefaultConnection"];
+      DBConfiguration.ConnectionString = builder.Configuration["ConnectionStrings:DefaultConnection"];
 
       builder.Services.AddControllersWithViews();
 
