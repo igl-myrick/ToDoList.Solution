@@ -47,7 +47,7 @@ namespace ToDoList.Models
       MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
       cmd.CommandText = "SELECT * FROM items;";
 
-      MySqlReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+      MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
       while (rdr.Read())
       {
         int itemId = rdr.GetInt32(0);
@@ -83,6 +83,11 @@ namespace ToDoList.Models
     {
       Item placeholderItem = new Item("placeholder item");
       return placeholderItem;
+    }
+
+    public void Save()
+    {
+
     }
   }
 }
