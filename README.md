@@ -9,6 +9,7 @@
 * _C#_
 * _.NET_
 * _MSTest_
+* _MySQL_
 
 ## Description
 
