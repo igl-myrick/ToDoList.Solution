@@ -80,7 +80,7 @@ namespace ToDoList.Models
       }
     }
 
-    public static Item Find(int searchId)
+    public static Item Find(int id)
     {
       MySqlConnection conn = new MySqlConnection(DBConfiguration.ConnectionString);
       conn.Open();
