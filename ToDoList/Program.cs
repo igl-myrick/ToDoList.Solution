@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ToDoList.Models;
 
@@ -10,13 +11,20 @@ namespace ToDoList
     {
       WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-      DBConfiguration.ConnectionString = builder.Configuration["ConnectionStrings:DefaultConnection"];
-
       builder.Services.AddControllersWithViews();
+
+      builder.Services.AddDbContext<ToDoListContext>(
+        dbContextOptions => dbContextOptions
+          .UseMySql(
+            builder.Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(builder.Configuration["ConnectionStrings:DefaultConnection"]
+            )
+          )
+      );
 
       WebApplication app = builder.Build();
 
       app.UseHttpsRedirection();
+      app.UseStaticFiles();
 
       app.UseRouting();
 
