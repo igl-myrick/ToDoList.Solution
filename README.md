@@ -35,13 +35,13 @@ _6: Optionally, to view tests, enter the `ToDoList.Tests` folder from the top le
 
 ```
 {
-    "ConnectionStrings": {
-        "DefaultConnection": "Server=localhost;Port=3306;database=to_do_list_with_mysqlconnector;uid=[YOUR-USERNAME-HERE];pwd=[YOUR-PASSWORD-HERE];"
-    }
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=localhost;Port=3306;database=[YOUR-DB-NAME];uid=[YOUR-USER-HERE];pwd=[YOUR-PASSWORD-HERE];"
+  }
 }
 ```
 
-_You will need to insert your own MySQL username in place of `[YOUR-USERNAME-HERE]` and MySQL password in place of `[YOUR-PASSWORD-HERE]`._
+_You will need to insert your own MySQL username in place of `[YOUR-USER-HERE]`, MySQL password in place of `[YOUR-PASSWORD-HERE]`, and the name of your database in place of `[YOUR-DB-NAME]`._
 
 ## Known Bugs
 
