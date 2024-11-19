@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using ToDoList.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,7 +74,7 @@ namespace ToDoList.Controllers
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
-      Item thisItem = _db.Items.FirstOrDefault(item => itemId == id);
+      Item thisItem = _db.Items.FirstOrDefault(item => item.ItemId == id);
       _db.Items.Remove(thisItem);
       _db.SaveChanges();
       return RedirectToAction("Index");
