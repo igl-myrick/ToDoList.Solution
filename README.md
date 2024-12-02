@@ -10,6 +10,7 @@
 * _.NET_
 * _MSTest_
 * _MySQL_
+* _MySQL Workbench_
 
 ## Description
 
@@ -23,15 +24,7 @@ _1: Clone the repository to a folder of choice on your machine (by either using 
 
 _2: Using a terminal application such as Git Bash or Windows Command Prompt, navigate to the top level of the program folder, then into the `ToDoList` folder._
 
-_3: Next, run `dotnet build` in the command line to build the program._
-
-_4: Once the program is built, run `dotnet run` to start the program._
-
-_5: When the program is running, navigate to `https://localhost:5001` to view and use the website._
-
-_6: Optionally, to view tests, enter the `ToDoList.Tests` folder from the top level, run `dotnet restore` to install MSTest packages, and `dotnet test` to run tests._
-
-* _Additionally, you will need to create an `appsettings.json` file within the `ToDoList` folder, including the following code:_
+_3: You will need to create an `appsettings.json` file within the `ToDoList` folder, including the following code:_
 
 ```
 {
@@ -41,7 +34,15 @@ _6: Optionally, to view tests, enter the `ToDoList.Tests` folder from the top le
 }
 ```
 
-_You will need to insert your own MySQL username in place of `[YOUR-USER-HERE]`, MySQL password in place of `[YOUR-PASSWORD-HERE]`, and the name of your database in place of `[YOUR-DB-NAME]`._
+_Insert your own MySQL username in place of `[YOUR-USER-HERE]`, MySQL password in place of `[YOUR-PASSWORD-HERE]`, and the name of your database in place of `[YOUR-DB-NAME]`._
+
+_4: Next, run `dotnet build` in the terminal to build the program._
+
+_5: Once the program is built, run `dotnet run` to start the program._
+
+_6: When the program is running, navigate to `https://localhost:5001` to view and use the website._
+
+_7: Optionally, to view tests, enter the `ToDoList.Tests` folder from the top level, run `dotnet restore` to install MSTest packages, and `dotnet test` to run tests._
 
 ## Known Bugs
 
