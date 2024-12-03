@@ -8,7 +8,6 @@
 
 * _C#_
 * _.NET_
-* _MSTest_
 * _MySQL_
 * _MySQL Workbench_
 
@@ -41,8 +40,6 @@ _4: Next, run `dotnet build` in the terminal to build the program._
 _5: Once the program is built, run `dotnet run` to start the program._
 
 _6: When the program is running, navigate to `https://localhost:5001` to view and use the website._
-
-_7: Optionally, to view tests, enter the `ToDoList.Tests` folder from the top level, run `dotnet restore` to install MSTest packages, and `dotnet test` to run tests._
 
 ## Known Bugs
 
