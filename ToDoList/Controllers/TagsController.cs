@@ -58,7 +58,7 @@ namespace ToDoList.Controllers
       #nullable disable
       if (joinEntity == null && itemId != 0)
       {
-        _db.ItemTags.Add(new ItemTag() { itemId = itemId, TagId = tag.TagId });
+        _db.ItemTags.Add(new ItemTag() { ItemId = itemId, TagId = tag.TagId });
         _db.SaveChanges();
       }
       return RedirectToAction("Details", new { id = tag.TagId });
