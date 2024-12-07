@@ -30,6 +30,20 @@ else
   </ul>
 }
 
+@if (!Model.IsCompleted)
+{
+  <p>This item is marked as To-do.</p>
+  @using (Html.BeginForm("UpdateStatus", "Items"))
+  {
+    @Html.Hidden("itemId", @Model.ItemId)
+    <input type="submit" value="Mark as completed">
+  }
+}
+else
+{
+  <p>This item is marked as Completed.</p>
+}
+
 <p>@Html.ActionLink("Back to list", "Index")</p>
 <p>@Html.ActionLink("Edit Item", "Edit", new { id = Model.ItemId })</p>
 <p>@Html.ActionLink("Delete Item", "Delete", new { id = Model.ItemId })
