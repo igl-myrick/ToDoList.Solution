@@ -111,5 +111,15 @@ namespace ToDoList.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    [HttpPost]
+    public ActionResult UpdateStatus(int itemId)
+    {
+      Item item = _db.Items.FirstOrDefault(item => item.ItemId == itemId);
+      item.IsCompleted = true;
+      _db.Items.Update(item);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
