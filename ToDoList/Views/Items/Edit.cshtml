@@ -15,6 +15,9 @@
   @Html.LabelFor(model => model.Description)
   @Html.EditorFor(model => model.Description)
 
+  <label for="DueDate">Due Date:</label>
+  @Html.EditorFor(model => model.DueDate)
+
   @Html.LabelFor(model => model.Category)
   @Html.DropDownList("CategoryId")
 
