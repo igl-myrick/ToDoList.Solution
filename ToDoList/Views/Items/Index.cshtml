@@ -25,7 +25,7 @@ else
       {
         status = "To-do";
       }
-      <li>@Html.ActionLink($"{item.Description}", "Details", new { id = item.ItemId }) | @item.Category.Name | @status</li>
+      <li>@Html.ActionLink($"{item.Description}", "Details", new { id = item.ItemId }) | @item.Category.Name | @status | Due Date: @item.DueDate</li>
     }
   </ul>
 }
