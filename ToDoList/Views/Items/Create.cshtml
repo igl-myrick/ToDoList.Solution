@@ -14,7 +14,7 @@
   @Html.TextBoxFor(model => model.Description)
 
   <label for="DueDate">Due Date:</label>
-  @Html.TextBoxFor(model => model.DueDate)
+  <input type="datetime-local" name="DueDate" id="DueDate">
 
   @Html.LabelFor(model => model.Category)
   @Html.DropDownList("CategoryId")
