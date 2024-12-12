@@ -3,6 +3,8 @@
 }
 
 @using ToDoList.Models;
+@using System.Linq;
+@using System.Collections.Generic;
 @model List<ToDoList.Models.Item>;
 
 <h1>Items</h1>
@@ -14,7 +16,9 @@
 else
 {
   <ul>
-    @foreach (Item item in Model)
+    @{IEnumerable<Item> ItemList = Model.OrderBy(item => item.DueDate);}
+
+    @foreach (Item item in ItemList)
     {
       string status = "";
       @if (item.IsCompleted == true) 
