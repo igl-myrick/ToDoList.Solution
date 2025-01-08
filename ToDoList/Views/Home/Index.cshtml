@@ -4,36 +4,47 @@
 
 @using ToDoList.Models;
 
-<h1>Welcome to the To Do List!</h1>
+<div class="container">
+  <div class="row">
+    <h1 class="text-center my-3">Welcome to the To Do List!</h1>
+    <div class="col-md-4">
+      <div id="categories-wrapper" class="border rounded p-2" style="height: 144px">
+        <h4>Categories</h4>
+        @if (Model["categories"].Length == 0)
+        {
+          <p>No categories have been added yet!</p>
+        }
+        <ul>
+          @foreach (Category cat in Model["categories"])
+          {
+            <li>@Html.ActionLink(@cat.Name, "Details", "Categories", new { id = @cat.CategoryId })</li>
+          }
+        </ul>
+      </div>
+    </div>
 
-<hr>
+    <div class="col-md-4">
+      <div id="items-wrapper" class="border rounded p-2" style="height: 144px">
+        <h4>Items</h4>
+        @if (Model["items"].Length == 0)
+        {
+          <p>No items have been added yet!</p>
+        }
+        <ul>
+          @foreach (Item item in Model["items"])
+          {
+            <li>@Html.ActionLink(@item.Description, "Details", "Items", new { id = @item.ItemId })</li>
+          }
+        </ul>
+      </div>
+    </div>
 
-<h4>Categories</h4>
-@if (Model["categories"].Length == 0)
-{
-  <p>No categories have been added yet!</p>
-}
-<ul>
-  @foreach (Category cat in Model["categories"])
-  {
-    <li>@Html.ActionLink(@cat.Name, "Details", "Categories", new { id = @cat.CategoryId })</li>
-  }
-</ul>
-
-<h4>Items</h4>
-@if (Model["items"].Length == 0)
-{
-  <p>No items have been added yet!</p>
-}
-<ul>
-  @foreach (Item item in Model["items"])
-  {
-    <li>@Html.ActionLink(@item.Description, "Details", "Items", new { id = @item.ItemId })</li>
-  }
-</ul>
-
-<hr>
-
-<p>@Html.ActionLink("See all items", "Index", "Items")</p>
-<p>@Html.ActionLink("See all categories", "Index", "Categories")</p>
-<p>@Html.ActionLink("See all tags", "Index", "Tags")</p>
+    <div class="col-md-4">
+      <div id="links-wrapper" class="border rounded p-2" style="height: 144px"><p>
+        @Html.ActionLink("See all items", "Index", "Items")</p>
+        <p>@Html.ActionLink("See all categories", "Index", "Categories")</p>
+        <p>@Html.ActionLink("See all tags", "Index", "Tags")</p>
+      </div>
+    </div>
+  </div>
+</div>
