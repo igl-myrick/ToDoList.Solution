@@ -8,7 +8,7 @@
   <div class="row">
     <h1 class="text-center my-3">Welcome to the To Do List!</h1>
     <div class="col-md-4">
-      <div id="categories-wrapper" class="border rounded p-2" style="height: 144px">
+      <div id="categories-wrapper" class="border rounded p-2">
         <h4>Categories</h4>
         @if (Model["categories"].Length == 0)
         {
@@ -24,7 +24,7 @@
     </div>
 
     <div class="col-md-4">
-      <div id="items-wrapper" class="border rounded p-2" style="height: 144px">
+      <div id="items-wrapper" class="border rounded p-2">
         <h4>Items</h4>
         @if (Model["items"].Length == 0)
         {
@@ -40,7 +40,7 @@
     </div>
 
     <div class="col-md-4">
-      <div id="links-wrapper" class="border rounded p-2" style="height: 144px"><p>
+      <div id="links-wrapper" class="border rounded p-2"><p>
         @Html.ActionLink("See all items", "Index", "Items")</p>
         <p>@Html.ActionLink("See all categories", "Index", "Categories")</p>
         <p>@Html.ActionLink("See all tags", "Index", "Tags")</p>
