@@ -41,7 +41,7 @@ namespace ToDoList.Controllers
     }
 
     [HttpPost]
-    public ActionResult Create(Item item)
+    public async Task<ActionResult> Create(Item item)
     {
       if (!ModelState.IsValid)
       {
@@ -50,6 +50,9 @@ namespace ToDoList.Controllers
       }
       else
       {
+        string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+        item.User = currentUser;
         _db.Items.Add(item);
         _db.SaveChanges();
         return RedirectToAction("Index");
