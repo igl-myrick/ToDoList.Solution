@@ -15,5 +15,6 @@ namespace ToDoList.Models
     public DateTime DueDate { get; set; }
     public Category Category { get; set; }
     public List<ItemTag> JoinEntities { get; }
+    public ApplicationUser User { get; set; }
   }
 }

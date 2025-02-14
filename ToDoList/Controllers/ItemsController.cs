@@ -4,24 +4,34 @@ using Microsoft.EntityFrameworkCore;
 using ToDoList.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace ToDoList.Controllers
 {
+  [Authorize]
   public class ItemsController : Controller
   {
     private readonly ToDoListContext _db;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public ItemsController(ToDoListContext db)
+    public ItemsController(UserManager<ApplicationUser> userManager, ToDoListContext db)
     {
+      _userManager = userManager;
       _db = db;
     }
 
-    public ActionResult Index()
+    public async Task<ActionResult> Index()
     {
-      List<Item> model = _db.Items
+      string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+      List<Item> userItems = _db.Items
+        .Where(entry => entry.User.Id == currentUser.Id)
         .Include(item => item.Category)
         .ToList();
-      return View(model);
+      return View(userItems);
     }
 
     public ActionResult Create()
@@ -31,7 +41,7 @@ namespace ToDoList.Controllers
     }
 
     [HttpPost]
-    public ActionResult Create(Item item)
+    public async Task<ActionResult> Create(Item item)
     {
       if (!ModelState.IsValid)
       {
@@ -40,6 +50,9 @@ namespace ToDoList.Controllers
       }
       else
       {
+        string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+        item.User = currentUser;
         _db.Items.Add(item);
         _db.SaveChanges();
         return RedirectToAction("Index");

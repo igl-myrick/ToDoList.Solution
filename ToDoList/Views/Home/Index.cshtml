@@ -25,25 +25,34 @@
 
     <div class="col-md-4">
       <div id="items-wrapper" class="border rounded p-2">
-        <h4>Items</h4>
-        @if (Model["items"].Length == 0)
+        @if (User.Identity.IsAuthenticated)
         {
-          <p>No items have been added yet!</p>
-        }
-        <ul>
-          @foreach (Item item in Model["items"])
+          <h4>Items for @User.Identity.Name</h4>
+          @if (Model["items"].Length == 0)
           {
-            <li>@Html.ActionLink(@item.Description, "Details", "Items", new { id = @item.ItemId })</li>
+            <p>No items have been added yet!</p>
           }
-        </ul>
+          <ul>
+            @foreach (Item item in Model["items"])
+            {
+              <li>@Html.ActionLink(@item.Description, "Details", "Items", new { id = @item.ItemId })</li>
+            }
+          </ul>
+        }
+        else
+        {
+          <h4>Items</h4>
+          <p>Please @Html.ActionLink("log in", "Login", "Account") to view or manage your items.</p>
+        }
       </div>
     </div>
 
     <div class="col-md-4">
-      <div id="links-wrapper" class="border rounded p-2"><p>
-        @Html.ActionLink("See all items", "Index", "Items")</p>
+      <div id="links-wrapper" class="border rounded p-2">
+        <p>@Html.ActionLink("See all items", "Index", "Items")</p>
         <p>@Html.ActionLink("See all categories", "Index", "Categories")</p>
         <p>@Html.ActionLink("See all tags", "Index", "Tags")</p>
+        <p>@Html.ActionLink("Create or manage an account", "Index", "Account")</p>
       </div>
     </div>
   </div>
